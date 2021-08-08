@@ -24,10 +24,10 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     public func resolveLocationName(with location: CLLocation, completion: @escaping((String?) -> Void)) {
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(location, preferredLocale: .current) { placemarks, error in
-            
             guard let place = placemarks?.first, error == nil else {
                 completion(nil)
-                return}
+                return
+            }
             
             print(place)
             
@@ -50,5 +50,4 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         completion?(location)
         manager.stopUpdatingLocation()
     }
-    
 }//End of class
